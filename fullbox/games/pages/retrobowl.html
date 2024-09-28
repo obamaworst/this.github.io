@@ -1,0 +1,218 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Missile Game</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Gill Sans', sans-serif; /* Use Gill Sans font */
+      color: white; /* Set text color to white */
+    }
+
+    .fullscreen-bar {
+      background-color: black;
+      display: flex;
+      width: 834px; /* Set the width to 100% */
+      align-items: center;
+      justify-content: space-between; /* Aligns items with space in between */
+      border-bottom-left-radius: 15px; /* Round bottom left corner */
+      border-bottom-right-radius: 15px; /* Round bottom right corner */
+      height: 60px; /* Adjust the height as needed */
+      position: relative;
+      top: 10px; /* Move the black bar down by 10px */
+      padding: 0 20px; /* Add padding to create space around items */
+      box-sizing: border-box; /* Include padding in the width calculation */
+    }
+
+    #fullscreen-btn {
+      background-color: black;
+      border: none;
+      cursor: pointer;
+      height: 100%; /* Same height as the black bar */
+      width: 60px; /* Same width as the height of the black bar */
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #fullscreen-btn img {
+      width: 70%; /* Adjust the size of the icon */
+      height: auto;
+    }
+
+    .iframe-container {
+      width: 100%; /* Set the width to 100% */
+      max-width: 834px; /* Limit the max width of the iframe container */
+      height: 493px;
+      overflow: hidden;
+      border-radius: 15px 15px 0 0; /* Round top corners */
+      position: relative;
+      top: 10px; /* Move the iframe down by 10px */
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Styles for the button grid */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 100px); /* Seven columns */
+      grid-template-rows: repeat(2, 100px); /* Two rows */
+      gap: 10px; /* Adjust the gap between buttons */
+      justify-content: center; /* Center aligns items within the grid container */
+      margin-top: 30px; /* Move the button grid further down */
+    }
+
+    .button {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    .button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .button:hover .overlay {
+      opacity: 1;
+    }
+
+    /* Styles for the text in the black bar */
+    .bar-text {
+      font-size: 1.2rem; /* Size of <h5> */
+      font-weight: bold; /* Set text to bold */
+      text-align: center; /* Center align the text */
+      width: 100%; /* Ensure text takes full width within the black bar */
+    }
+  </style>
+</head>
+<body>
+  <div class="iframe-container">
+    <iframe id="myIframe" src="https://retrobowlmadebyaj.netlify.app/"></iframe>
+  </div>
+  <div class="fullscreen-bar">
+    <span class="bar-text">RETRO BOWL</span> <!-- Replace "Your Text Here" with desired text -->
+    <button id="fullscreen-btn" onclick="toggleFullscreen()">
+      <img src="/images/fullscreen.svg" alt="Fullscreen">
+    </button>
+  </div>
+
+  <!-- Button Grid -->
+  <div class="button-grid">
+    <a href="/index.html" class="button">
+      <img src="/images/icon.png" alt="1v1 Lol">
+      <div class="overlay">Missile</div>
+    </a>
+    <a href="/games/pages/nutsim.html" class="button">
+      <img src="/images/nut.png" alt="Retro Bowl">
+      <div class="overlay">Nut Sim</div>
+    </a>
+    <a href="/games/pages/subwaysurf.html" class="button">
+      <img src="/images/subwaysurf.png" alt="Subway Surf">
+      <div class="overlay">Subway Surf</div>
+    </a>
+    <a href="/games/pages/driftboss.html" class="button">
+      <img src="/images/driftboss.png" alt="Drift Boss">
+      <div class="overlay">Drift Boss</div>
+    </a>
+    <a href="/games/pages/slopegame.html" class="button">
+      <img src="/images/slope.png" alt="Slope">
+      <div class="overlay">Slope</div>
+    </a>
+    <a href="/games/pages/gunspin.html" class="button">
+      <img src="/images/gunspin.png" alt="Gunspin">
+      <div class="overlay">Gunspin</div>
+    </a>
+    <a href="/apps/pages/youtube.html" class="button">
+      <img src="/images/youtube.png" alt="Youtube">
+      <div class="overlay">Youtube</div>
+    </a>
+    <a href="/games/pages/motox3m.html" class="button">
+      <img src="/images/motox3m.png" alt="Image 8">
+      <div class="overlay">Moto X 3M</div>
+    </a>
+    <a href="/games/pages/smashkarts.html" class="button">
+      <img src="/images/smashkarts.png" alt="Image 9">
+      <div class="overlay">Smash Karts</div>
+    </a>
+    <a href="/games/pages/cookieclick.html" class="button">
+      <img src="/images/cookie.png" alt="Image 10">
+      <div class="overlay">Cookie Click</div>
+    </a>
+    <a href="/games/pages/1v1lol.html" class="button">
+      <img src="/images/1v1lol.png" alt="Image 11">
+      <div class="overlay">1v1 lol</div>
+    </a>
+    <a href="/games/pages/hackertype.html" class="button">
+      <img src="/images/hacker.png" alt="Image 12">
+      <div class="overlay">Hacker Type</div>
+    </a>
+    <a href="/games/pages/getawayshoot.html" class="button">
+      <img src="/images/getaway.png" alt="Image 13">
+      <div class="overlay"></div>
+    </a>
+    <a href="/games/pages/stickmanhook.html" class="button">
+      <img src="/images/stickman.png" alt="Image 14">
+      <div class="overlay">Stick Hook</div>
+    </a>
+  </div>
+
+  <script>
+    function toggleFullscreen() {
+      var iframe = document.getElementById("myIframe");
+
+      if (!document.fullscreenElement) {
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) { /* Firefox */
+          iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+          iframe.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
